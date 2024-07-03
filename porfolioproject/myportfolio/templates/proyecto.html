@@ -1,0 +1,78 @@
+{% load static %}
+{% load bootstrap5 %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Normalize -->
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <!-- bootstrap 5.3 -->
+    {% bootstrap_css %}
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles_proyecto.css' %}"/>
+    <title>proyectos</title>
+</head>
+
+<body>
+  <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary ">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt=""></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Incio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home_proyectos' %}">Proyectos</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+    <div class="intro intro-single route bg-image" >
+      
+        <div class="overlay-mf"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="intro-container">
+              <h2 class="intro-title mb-4">
+                 Proyectos</h2>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <section id="projects" class="py-5">
+      <div class="container">
+        <h2 class="text-center titulo">Mis proyectos</h2>
+        <div class="row">
+          {% for proyecto in proyectos %}
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <img src="{{ proyecto.imagen.url}}" alt="{{proyecto.titulo}}" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title text-dark">{{proyecto.titulo}}</h5>
+              <p class="card-text text-dark">{{proyecto.descripcion}}</p>
+              <a href="{{proyecto.link_sitio}}" class="btn btn-success" target="_blank">Ver sitio</a>
+              <a href="{{proyecto.link_repositorio}}" class="btn btn-primary" target="_blank">Ver repositorio</a>
+              <a href="{% url 'proyecto_detalle' proyecto.pk %}" class="btn btn-dark">Ver Detalle</a> <!-- Nuevo botón -->
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      </div>
+    </section>
+    
+
+<!-- Bootstrap JS -->
+{% bootstrap_javascript %}
+
+</body>
+</html>

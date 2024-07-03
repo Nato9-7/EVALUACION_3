@@ -1,0 +1,41 @@
+body{
+    background-color: #151515;
+    color: #EEEEEE;
+}
+
+tbody{
+    background-color: #A91D3A;
+    color: #EEEEEE;
+}
+
+.titulo-login{
+    background-color: #A91D3A;
+    border-radius: 5px;
+}
+
+.titulo-proyecto{
+    padding: 5px;
+    background-color: #A91D3A;
+    border-radius: 10px;
+    text-shadow: 
+                2px 2px 0 #000, 
+                -1px -1px 0 #000, 
+                -1px 1px 0 #000, 
+                2px -1px 0 #000;
+}
+
+.container{
+    display: grid;
+    justify-content: center;
+}
+
+.button{
+    width: 96%;
+}
+
+.detalle{
+    margin: 5px;
+    border-top: 5px solid #A91D3A;
+}
+
+
